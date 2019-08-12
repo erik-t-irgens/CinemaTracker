@@ -12,10 +12,8 @@
 
 @foreach(Genre genre in Model)
 {
-    <h1>@genre.Name</h1>
-
-    @foreach(GenreMovie genreMovie in genre.Movies)
-    {
-        <h4>@genreMovie.Movie.Title</h4>
-    }
+    <h1>@Html.ActionLink($"{genre.Name}", "Details", new { id = genre.GenreId})</h1>
 }
+
+<p>@Html.ActionLink("Add new Genre", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

@@ -1,0 +1,18 @@
+@{ Layout = "_Layout"; }
+
+@using CinemaTracker.Models;
+@model CinemaTracker.Models.Genre;
+
+<h1>Welcome to CinemaTracker!</h1>
+
+@if(Model.Movies.Count == 0)
+{
+    <h3>There are no Movies in this genre yet. That(apostraphe)s the thing</h3>
+}
+@foreach(GenreMovie genreMovie in Model.Movies)
+{
+    @Html.ActionLink($"{@genreMovie.Movie.Title}", "Details", "Movies", new {id = genreMovie.Movie.MovieId})
+    <h4>@genreMovie.Movie.Title</h4>
+}
+
+<p>@Html.ActionLink("Show all Genres", "Index")</p>
